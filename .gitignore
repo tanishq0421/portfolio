@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# planning docs
+docs/superpowers/plans/
+docs/superpowers/specs/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
