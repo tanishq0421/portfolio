@@ -12,9 +12,9 @@ export const projects: CaseStudy[] = [
     approach:
       "Built two halves on one trace abstraction, surfaced in a dark Next.js operations console: (1) domain-specific evals — groundedness, policy compliance, refusal, tool-safety — over real agent traces with a measured failure taxonomy; (2) a red-team harness running indirect prompt-injection attacks across two surfaces (poisoned RAG doc, poisoned tool output), cross-model comparison, and a MART-style adaptive attacker loop.",
     decisions: [
-      "Built the agent on LangGraph with a hybrid RAG pipeline (pgvector dense + ParadeDB BM25, RRF-fused) and per-agent KB isolation, then added guardrail layers (spotlighting, PII egress filtering) — this is what cut attack success rate from 100% to under 20%.",
+      "Built the agent on LangGraph with a hybrid RAG pipeline (pgvector dense + ParadeDB BM25, RRF-fused) and per-agent KB isolation, then added guardrail layers (spotlighting, PII egress filtering) — this is what cut the dashboard's built-in canary-injection benchmark's attack success rate from 100% to under 20%.",
       "Custom-built the eval/tracing layer (a Trace abstraction + LLM-as-judge) instead of adopting DeepEval or Langfuse, to keep both eval and red-team flowing through the same trace format.",
-      "Ran cross-model red-team comparisons and found Claude Haiku held at 0% attack success rate against the same injection attacks that hit GPT-4o-mini at 25% — a measured finding, not a claim.",
+      "Ran a separate, more targeted cross-model red-team campaign (curated indirect-injection attacks across two surfaces) and found Claude Haiku held at 0% attack success rate against the same attacks that hit GPT-4o-mini at 25% — a different measurement from the canary-injection benchmark behind the headline number above, not a contradiction of it.",
       "The eval suite caught a real safety bug in the reference agent — an unauthorized refund triggered by a cancel request — flagged independently by 3 of the evals.",
     ],
     tradeoffs: [

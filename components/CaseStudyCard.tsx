@@ -5,6 +5,10 @@ import type { CaseStudy } from "@/lib/data/types";
 
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
   const [expanded, setExpanded] = useState(false);
+  const panelId = `case-study-${study.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")}`;
 
   return (
     <div className="rounded-lg border border-border">
@@ -12,10 +16,27 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         type="button"
         onClick={() => setExpanded((value) => !value)}
         aria-expanded={expanded}
-        className="flex w-full flex-col gap-1 px-6 py-5 text-left"
+        aria-controls={panelId}
+        className="flex w-full cursor-pointer flex-col gap-1 px-6 py-5 text-left transition-colors hover:bg-white/[0.02]"
       >
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <span className="font-semibold text-foreground">{study.title}</span>
+          <span className="flex items-center gap-2 font-semibold text-foreground">
+            {study.title}
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`h-4 w-4 shrink-0 text-muted transition-transform ${
+                expanded ? "rotate-180" : ""
+              }`}
+              aria-hidden="true"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
           <span className="font-mono text-xs text-muted">{study.dates}</span>
         </div>
         <p className="text-sm text-muted">{study.summary}</p>
@@ -23,7 +44,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
       </button>
 
       {expanded && (
-        <div className="space-y-6 border-t border-border px-6 py-6">
+        <div id={panelId} className="space-y-6 border-t border-border px-6 py-6">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-muted">
               Problem

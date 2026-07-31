@@ -53,6 +53,7 @@ export const surgegrowthCaseStudies: CaseStudy[] = [
     decisions: [
       "Used Postgres as the job store (not just Pub/Sub) so job state survives restarts and is queryable, then used Pub/Sub purely for dispatch and fan-out.",
       "Implemented atomic claims (not a distributed lock service) to guarantee exactly-once execution under 30–50 req/sec peaks without adding a new infra dependency.",
+      "This same job infrastructure also runs the in-house Facebook/Instagram, Google Ads, and YouTube scrapers that replaced paid scraping APIs — routing them through Decodo residential proxies to bypass anti-bots cut the bill $1,800 → $200/mo (~89%).",
     ],
     tradeoffs: [
       "Cloud Run Jobs/Functions cold starts add latency variance versus long-running workers, accepted because the workload is bursty rather than constant.",
