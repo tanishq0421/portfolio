@@ -3,6 +3,7 @@ import { ImpactStrip } from "@/components/ImpactStrip";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { SkillsSection } from "@/components/SkillsSection";
+import { LeadershipSection } from "@/components/LeadershipSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />
+      <LeadershipSection />
     </main>
   );
 }
