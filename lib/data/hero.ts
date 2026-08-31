@@ -10,6 +10,9 @@ export const hero = {
       href: "https://www.linkedin.com/in/tanishq-shukla-735016195/",
     },
     { label: "Email", href: "mailto:tanishq.shukla.official@gmail.com" },
-    { label: "Resume", href: "/resume.pdf" },
+    {
+      label: "Resume",
+      href: "https://drive.google.com/file/d/16-2eOYT0Fs2yo3zC7ztQRr5RZY8mAyho/view?usp=sharing",
+    },
   ],
 };
