@@ -11,7 +11,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
     .replace(/^-+|-+$/g, "")}`;
 
   return (
-    <div className="rounded-lg border border-border">
+    <div className="group rounded-lg border border-border bg-surface/30 transition-colors hover:border-border-strong">
       <button
         type="button"
         onClick={() => setExpanded((value) => !value)}
@@ -97,45 +97,52 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         )}
       </div>
 
-      {expanded && (
-        <div id={panelId} className="space-y-6 border-t border-border px-6 py-6">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              Problem
-            </p>
-            <p className="mt-2 text-sm text-foreground">{study.problem}</p>
-          </div>
+      {/* Smooth height animation via grid-template-rows 0fr → 1fr */}
+      <div
+        className={`grid transition-[grid-template-rows] duration-500 ease-out ${
+          expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div id={panelId} className="space-y-6 border-t border-border px-6 py-6">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Problem
+              </p>
+              <p className="mt-2 text-sm text-foreground">{study.problem}</p>
+            </div>
 
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              Approach
-            </p>
-            <p className="mt-2 text-sm text-foreground">{study.approach}</p>
-          </div>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Approach
+              </p>
+              <p className="mt-2 text-sm text-foreground">{study.approach}</p>
+            </div>
 
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              Key decisions
-            </p>
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-foreground">
-              {study.decisions.map((decision) => (
-                <li key={decision}>{decision}</li>
-              ))}
-            </ul>
-          </div>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Key decisions
+              </p>
+              <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-foreground">
+                {study.decisions.map((decision) => (
+                  <li key={decision}>{decision}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              Tradeoffs
-            </p>
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-foreground">
-              {study.tradeoffs.map((tradeoff) => (
-                <li key={tradeoff}>{tradeoff}</li>
-              ))}
-            </ul>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                Tradeoffs
+              </p>
+              <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-foreground">
+                {study.tradeoffs.map((tradeoff) => (
+                  <li key={tradeoff}>{tradeoff}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

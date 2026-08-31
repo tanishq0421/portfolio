@@ -2,7 +2,7 @@ import { hero } from "@/lib/data/hero";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
+    <footer id="contact" className="scroll-mt-20 border-t border-border">
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 px-6 py-12 md:flex-row md:items-center md:justify-between">
         <p className="font-mono text-xs text-muted">
           {hero.name} · built with Next.js

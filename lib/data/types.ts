@@ -35,4 +35,9 @@ export type SkillGroup = {
 export type Metric = {
   value: string;
   label: string;
+  // Optional numeric target for the count-up animation; when present the strip
+  // animates `prefix + to + suffix` instead of rendering `value` statically.
+  to?: number;
+  prefix?: string;
+  suffix?: string;
 };

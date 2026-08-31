@@ -1,6 +1,12 @@
 export const hero = {
   name: "Tanishq Shukla",
   role: "Founding Engineer · Full-Stack AI Engineer",
+  roles: [
+    "Founding Engineer",
+    "Full-Stack AI Engineer",
+    "LLM Infrastructure",
+    "Agent Systems",
+  ],
   tagline:
     "I build production LLM infrastructure and agent systems — from OAuth-secured MCP servers to red-team platforms that measure whether agents are actually safe to ship.",
   links: [

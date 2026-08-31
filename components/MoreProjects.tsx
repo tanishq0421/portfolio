@@ -1,17 +1,18 @@
 import { Section } from "@/components/Section";
+import { Reveal } from "@/components/Reveal";
 import { moreProjects } from "@/lib/data/projects";
 
 export function MoreProjects() {
   return (
     <Section id="more" eyebrow="More projects" title="Smaller builds & experiments">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {moreProjects.map((project) => (
+        {moreProjects.map((project, i) => (
+          <Reveal key={project.title} delay={i * 70}>
           <a
-            key={project.title}
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="group flex flex-col rounded-lg border border-border px-6 py-5 transition-colors hover:border-accent/40 hover:bg-white/[0.02]"
+            className="group flex h-full flex-col rounded-lg border border-border bg-surface/30 px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:bg-white/[0.02]"
           >
             <span className="flex items-center gap-2 font-semibold text-foreground">
               {project.title}
@@ -31,6 +32,7 @@ export function MoreProjects() {
               ))}
             </div>
           </a>
+          </Reveal>
         ))}
       </div>
     </Section>
