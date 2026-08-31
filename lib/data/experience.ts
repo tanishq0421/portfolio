@@ -1,4 +1,4 @@
-import type { CaseStudy, CompactEntry } from "@/lib/data/types";
+import type { CaseStudy } from "@/lib/data/types";
 
 export const surgegrowthCaseStudies: CaseStudy[] = [
   {
@@ -102,29 +102,3 @@ export const kimccCaseStudy: CaseStudy = {
   stack: ["Electron", "Node.js", "MongoDB"],
 };
 
-export const otonEntry: CompactEntry = {
-  title: "SDE Intern",
-  org: "Oton",
-  dates: "Dec '23 – Feb '24",
-  summary:
-    "Built a Slack bot (Node.js) automating team workflows, administered PostgreSQL at scale via Prisma (25% faster queries), crafted cursor-based pagination and Jira API integration for boards/sprints/issues, and used Redis Bull queues for batch processing under bursty load.",
-};
-
-// Compact timeline strip — the résumé facts, kept below the work so projects lead.
-export const experienceTimeline: CompactEntry[] = [
-  {
-    title: "Founding Engineer",
-    org: "Surgegrowth",
-    dates: "Feb '25 – Present",
-    summary:
-      "Production LLM infrastructure: OAuth-secured MCP server, usage-based billing, exactly-once distributed jobs, and a self-hosted media pipeline.",
-  },
-  {
-    title: "SDE Intern",
-    org: "Kimcc",
-    dates: "May – Jul '24",
-    summary:
-      "Revamped Pulse analytics (+25% engagement) and shipped a cross-platform, offline-first Electron desktop app.",
-  },
-  otonEntry,
-];
