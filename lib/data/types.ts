@@ -27,6 +27,13 @@ export type CompactEntry = {
   summary: string;
 };
 
+export type JourneyMilestone = {
+  year: string;
+  title: string;
+  body: string;
+  tags: string[];
+};
+
 export type SkillGroup = {
   label: string;
   items: string[];
