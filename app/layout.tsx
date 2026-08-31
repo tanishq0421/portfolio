@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tanishq Shukla — Founding Engineer · Full-Stack AI Engineer",
+  title: "Tanishq Shukla — Full-Stack AI Engineer",
   description:
-    "Founding Engineer at Surgegrowth building production LLM infrastructure — MCP servers, distributed job systems, and agent red-teaming.",
+    "Full-Stack AI Engineer and ex-Founding Engineer at Surgegrowth, building production LLM infrastructure — MCP servers, distributed job systems, and agent red-teaming.",
 };
 
 export default function RootLayout({

@@ -3,7 +3,7 @@ import type { CaseStudy } from "@/lib/data/types";
 export const surgegrowthCaseStudies: CaseStudy[] = [
   {
     title: "MCP Server for Claude.ai & Cursor",
-    dates: "Feb '25 – Present",
+    dates: "Feb '25 – Aug '26",
     summary:
       "Built and secured a FastMCP server exposing 9 task-oriented tools to Claude.ai and Cursor.",
     metric: "~12k tool calls/day",
@@ -22,7 +22,7 @@ export const surgegrowthCaseStudies: CaseStudy[] = [
   },
   {
     title: "Billing & Usage-Based Pricing Engine",
-    dates: "Feb '25 – Present",
+    dates: "Feb '25 – Aug '26",
     summary:
       "Co-built idempotent payments and metered billing across 40+ orgs.",
     metric: "$10k+/mo @ 99.99% success",
@@ -42,7 +42,7 @@ export const surgegrowthCaseStudies: CaseStudy[] = [
   },
   {
     title: "Distributed Job Infrastructure",
-    dates: "Feb '25 – Present",
+    dates: "Feb '25 – Aug '26",
     summary:
       "Co-designed exactly-once scheduled and event-driven job execution at scale.",
     metric: "~50k requests/day (30–50/sec peaks)",
@@ -62,7 +62,7 @@ export const surgegrowthCaseStudies: CaseStudy[] = [
   },
   {
     title: "Media-Processing Engine",
-    dates: "Feb '25 – Present",
+    dates: "Feb '25 – Aug '26",
     summary:
       "Replaced a paid video API with a self-hosted FFmpeg + ML pipeline.",
     metric: "500k+ frames/day",

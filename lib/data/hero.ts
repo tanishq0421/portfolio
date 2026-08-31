@@ -1,9 +1,9 @@
 export const hero = {
   name: "Tanishq Shukla",
-  role: "Founding Engineer · Full-Stack AI Engineer",
+  role: "Full-Stack AI Engineer · Ex-Founding Engineer @ Surgegrowth",
   roles: [
-    "Founding Engineer",
     "Full-Stack AI Engineer",
+    "Ex-Founding Engineer @ Surgegrowth",
     "LLM Infrastructure",
     "Agent Systems",
   ],
