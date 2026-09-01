@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
 });
 
@@ -27,10 +28,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable} antialiased`}
     >
       <body className="bg-background text-foreground">
         <div className="ambient-bg" aria-hidden="true" />
+        <SmoothScroll />
         <NavBar />
         {children}
       </body>

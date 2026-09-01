@@ -1,16 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08080c;
-  --surface: #0f0f15;
-  --surface-2: #14141c;
-  --foreground: #ededf1;
+  /* Deep blue-black ground (not pure black) per dark-mode best practice */
+  --background: #0a0e15;
+  --surface: #121a26;
+  --surface-2: #182231;
+  --foreground: #e7ecf2;
+  --muted: #8a94a6;
+  --border: #1e2a3d;
+  --border-strong: #2b3a52;
+  /* Teal = trust / system / structure (leads the impression) */
+  --primary: #2dd4bf;
+  --primary-strong: #5eead4;
+  --primary-soft: rgba(45, 212, 191, 0.14);
+  /* Amber = energy / signal / calls-to-action (the pop) */
   --accent: #f5a524;
   --accent-2: #ff7a45;
-  --accent-soft: rgba(245, 165, 36, 0.14);
-  --muted: #9797a4;
-  --border: #23232c;
-  --border-strong: #33333f;
+  --accent-soft: rgba(245, 165, 36, 0.15);
 }
 
 @theme inline {
@@ -18,13 +24,15 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-bricolage);
+  --font-mono: var(--font-jetbrains);
 }
 
 html {
@@ -39,34 +47,55 @@ body {
   overflow-x: clip;
 }
 
-/* Ambient depth — soft warm + cool glows fixed behind all content */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Ambient depth — teal system glow + amber signal glow */
 .ambient-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60rem 40rem at 78% -8%, rgba(245, 165, 36, 0.1), transparent 60%),
-    radial-gradient(52rem 40rem at 12% 8%, rgba(99, 102, 241, 0.08), transparent 55%),
-    radial-gradient(46rem 46rem at 50% 108%, rgba(255, 122, 69, 0.06), transparent 60%);
+    radial-gradient(60rem 40rem at 82% -6%, rgba(45, 212, 191, 0.09), transparent 60%),
+    radial-gradient(48rem 40rem at 8% 10%, rgba(245, 165, 36, 0.07), transparent 55%),
+    radial-gradient(46rem 46rem at 50% 112%, rgba(45, 212, 191, 0.05), transparent 60%);
 }
 
-/* Warm gradient text for the hero name / accents */
+/* Name gradient: text → teal (system) → amber (signal) */
 .text-gradient {
-  background: linear-gradient(100deg, #fff 0%, #ffd27a 42%, var(--accent) 70%, var(--accent-2) 100%);
+  background: linear-gradient(104deg, #ffffff 0%, var(--primary) 52%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Glassy sticky nav */
 .glass {
-  background: color-mix(in srgb, var(--background) 68%, transparent);
+  background: color-mix(in srgb, var(--background) 66%, transparent);
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
-/* Scroll-reveal — entries start hidden, .is-visible releases them */
+/* Scroll-reveal */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -81,7 +110,6 @@ body {
   transform: none;
 }
 
-/* Blinking caret for the typewriter */
 @keyframes caret-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -90,34 +118,32 @@ body {
   display: inline-block;
   width: 2px;
   margin-left: 2px;
-  background: var(--accent);
+  background: var(--primary);
   animation: caret-blink 1s step-end infinite;
 }
 
-/* Soft float for the scroll cue */
 @keyframes float-y {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(6px); }
 }
 .float-y { animation: float-y 2s ease-in-out infinite; }
 
-/* Sailboat bob as it travels the journey rail */
-@keyframes ship-bob {
-  0%, 100% { transform: translateY(0) rotate(-6deg); }
-  50% { transform: translateY(-3px) rotate(6deg); }
+/* Signal packet pulse as it travels the journey */
+@keyframes packet-pulse {
+  0%, 100% { box-shadow: 0 0 10px 2px var(--accent), 0 0 22px 6px rgba(245,165,36,0.35); }
+  50% { box-shadow: 0 0 14px 4px var(--accent), 0 0 30px 10px rgba(245,165,36,0.5); }
 }
-.ship-bob { animation: ship-bob 2.4s ease-in-out infinite; }
+.packet-pulse { animation: packet-pulse 1.6s ease-in-out infinite; }
 
-/* Status-pill dot pulse */
 @keyframes ping-dot {
-  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); }
-  70% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(45, 212, 191, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
 }
 .ping-dot { animation: ping-dot 2s ease-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .caret, .float-y, .ping-dot, .ship-bob { animation: none; }
+  .caret, .float-y, .ping-dot, .packet-pulse { animation: none; }
 }
