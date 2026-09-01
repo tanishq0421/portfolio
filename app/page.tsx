@@ -14,9 +14,9 @@ export default function Home() {
       <main>
         <ImpactStrip />
         <JourneySection />
+        <TechStack />
         <ProjectsSection />
         <MoreProjects />
-        <TechStack />
         <LeadershipSection />
       </main>
       <SiteFooter />
