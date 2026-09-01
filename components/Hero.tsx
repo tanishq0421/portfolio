@@ -1,5 +1,5 @@
 import { hero } from "@/lib/data/hero";
-import { Starfield } from "@/components/Starfield";
+import { SystemGraph } from "@/components/SystemGraph";
 import { Typewriter } from "@/components/Typewriter";
 import { Reveal } from "@/components/Reveal";
 
@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <header id="top" className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <Starfield />
+        <SystemGraph />
       </div>
       {/* Fade the starfield into the page background at the bottom */}
       <div
@@ -21,7 +21,7 @@ export function Hero() {
       <div className="relative mx-auto w-full max-w-4xl px-6 pb-24 pt-36 md:pt-48">
         <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 font-mono text-xs text-muted">
-            <span className="ping-dot h-2 w-2 rounded-full bg-emerald-400" />
+            <span className="ping-dot h-2 w-2 rounded-full bg-primary" />
             Open to new roles
           </span>
         </Reveal>
@@ -33,7 +33,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={160}>
-          <p className="mt-4 flex h-8 items-center font-mono text-lg text-accent md:text-xl">
+          <p className="mt-4 flex h-8 items-center font-mono text-lg text-primary md:text-xl">
             <Typewriter phrases={hero.roles} />
           </p>
         </Reveal>
@@ -59,7 +59,7 @@ export function Hero() {
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                className="rounded-full border border-border-strong px-4 py-2.5 font-mono text-sm text-muted transition-colors hover:border-accent hover:text-accent"
+                className="rounded-full border border-border-strong px-4 py-2.5 font-mono text-sm text-muted transition-colors hover:border-primary hover:text-primary"
               >
                 {link.label}
               </a>
@@ -71,7 +71,7 @@ export function Hero() {
       <a
         href="#work"
         aria-label="Scroll to work"
-        className="float-y absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-accent md:flex"
+        className="float-y absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-primary md:flex"
       >
         Scroll
         <svg
