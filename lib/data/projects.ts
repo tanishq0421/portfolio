@@ -151,9 +151,9 @@ const outageRadar: CaseStudy = {
 export const selectedWork: CaseStudy[] = [
   slimserve,
   sentinel,
-  outageRadar,
   mcpServer,
   jobInfra,
+  outageRadar,
   billingEngine,
   mediaEngine,
   mynaksh,
