@@ -40,7 +40,9 @@ export function NavBar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "glass border-b border-border" : "border-b border-transparent"
+        scrolled
+          ? "border-b border-border bg-background shadow-[0_8px_24px_-16px_rgba(0,0,0,0.9)]"
+          : "border-b border-transparent"
       }`}
     >
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-3.5">
