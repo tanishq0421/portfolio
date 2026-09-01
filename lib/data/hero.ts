@@ -1,14 +1,14 @@
 export const hero = {
   name: "Tanishq Shukla",
-  role: "Full-Stack AI Engineer · Ex-Founding Engineer @ Surgegrowth",
+  role: "Backend & Distributed Systems Engineer · AI Engineering",
   roles: [
-    "Full-Stack AI Engineer",
-    "Ex-Founding Engineer @ Surgegrowth",
+    "Backend & Distributed Systems",
+    "AI Engineering",
+    "Agentic Systems",
     "LLM Infrastructure",
-    "Agent Systems",
   ],
   tagline:
-    "I build production LLM infrastructure and agent systems — from OAuth-secured MCP servers to red-team platforms that measure whether agents are actually safe to ship.",
+    "Backend and distributed-systems engineer with deep AI engineering skills. I build the infrastructure behind production LLM products — exactly-once job systems, idempotent billing, OAuth-secured MCP servers, and agentic red-team platforms.",
   links: [
     { label: "GitHub", href: "https://github.com/tanishq0421" },
     {

@@ -15,9 +15,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tanishq Shukla — Full-Stack AI Engineer",
+  title: "Tanishq Shukla — Backend, Distributed Systems & AI Engineer",
   description:
-    "Full-Stack AI Engineer and ex-Founding Engineer at Surgegrowth, building production LLM infrastructure — MCP servers, distributed job systems, and agent red-teaming.",
+    "Backend and distributed-systems engineer with strong AI engineering skills. Ex-Founding Engineer at Surgegrowth — exactly-once job systems, idempotent billing, MCP servers, and agentic red-teaming.",
 };
 
 export default function RootLayout({
