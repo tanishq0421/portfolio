@@ -21,7 +21,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
           {study.tag && (
-            <span className="rounded-full border border-accent/40 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider text-accent">
+            <span className="rounded-full border border-primary/40 px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider text-primary">
               {study.tag}
             </span>
           )}
@@ -88,7 +88,7 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-accent underline underline-offset-4"
+                className="text-primary underline underline-offset-4"
               >
                 {link.label} →
               </a>

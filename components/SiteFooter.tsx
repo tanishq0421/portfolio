@@ -12,7 +12,7 @@ export function SiteFooter() {
             <a
               key={link.label}
               href={link.href}
-              className="text-muted transition-colors hover:text-accent"
+              className="text-muted transition-colors hover:text-primary"
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noreferrer" : undefined}
             >

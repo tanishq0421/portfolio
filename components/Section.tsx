@@ -18,8 +18,8 @@ export function Section({
       className="mx-auto w-full max-w-4xl scroll-mt-20 px-6 py-20 md:py-28"
     >
       <Reveal>
-        <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-accent">
-          <span className="h-px w-6 bg-accent" aria-hidden="true" />
+        <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-primary">
+          <span className="h-px w-6 bg-primary" aria-hidden="true" />
           {eyebrow}
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">

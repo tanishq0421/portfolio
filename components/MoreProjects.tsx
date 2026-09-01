@@ -12,11 +12,11 @@ export function MoreProjects() {
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="group flex h-full flex-col rounded-lg border border-border bg-surface/30 px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:bg-white/[0.02]"
+            className="group flex h-full flex-col rounded-lg border border-border bg-surface/30 px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/[0.02]"
           >
             <span className="flex items-center gap-2 font-semibold text-foreground">
               {project.title}
-              <span className="font-mono text-sm text-muted transition-colors group-hover:text-accent">
+              <span className="font-mono text-sm text-muted transition-colors group-hover:text-primary">
                 ↗
               </span>
             </span>

@@ -58,7 +58,7 @@ export function NavBar() {
               href={`#${s.id}`}
               className={`rounded-full px-3 py-1.5 font-mono text-xs transition-colors ${
                 active === s.id
-                  ? "bg-[var(--accent-soft)] text-accent"
+                  ? "bg-[var(--primary-soft)] text-primary"
                   : "text-muted hover:text-foreground"
               }`}
             >
@@ -71,7 +71,7 @@ export function NavBar() {
           href="https://drive.google.com/file/d/16-2eOYT0Fs2yo3zC7ztQRr5RZY8mAyho/view?usp=sharing"
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-border-strong px-3.5 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-accent hover:text-accent"
+          className="rounded-full border border-border-strong px-3.5 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-primary hover:text-primary"
         >
           Resume
         </a>
