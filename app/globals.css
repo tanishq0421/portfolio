@@ -101,6 +101,13 @@ body {
 }
 .float-y { animation: float-y 2s ease-in-out infinite; }
 
+/* Sailboat bob as it travels the journey rail */
+@keyframes ship-bob {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-3px) rotate(6deg); }
+}
+.ship-bob { animation: ship-bob 2.4s ease-in-out infinite; }
+
 /* Status-pill dot pulse */
 @keyframes ping-dot {
   0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); }
@@ -112,5 +119,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .caret, .float-y, .ping-dot { animation: none; }
+  .caret, .float-y, .ping-dot, .ship-bob { animation: none; }
 }

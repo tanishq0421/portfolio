@@ -4,6 +4,18 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { journey } from "@/lib/data/journey";
 import { Reveal } from "@/components/Reveal";
 
+function Sailboat() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+      {/* sails */}
+      <path d="M11 2 L11 13 L3.5 13 Z" fill="#ededf1" />
+      <path d="M12.4 4.2 L19 13 L12.4 13 Z" fill="var(--accent)" />
+      {/* hull */}
+      <path d="M3 15 H21 L18.6 20 H5.4 Z" fill="#cfd3dd" />
+    </svg>
+  );
+}
+
 export function JourneySection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
@@ -19,8 +31,8 @@ export function JourneySection() {
     const update = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || 800;
-      const start = vh * 0.82; // start filling as the track enters the lower viewport
-      const end = vh * 0.45; // fully filled once the track's end clears mid-viewport
+      const start = vh * 0.82;
+      const end = vh * 0.4;
       const span = rect.height + (start - end);
       const p = (start - rect.top) / span;
       setProgress(Math.max(0, Math.min(1, p)));
@@ -42,6 +54,7 @@ export function JourneySection() {
   }, []);
 
   const n = journey.length;
+  const shipTop = `calc(0.25rem + (100% - 0.5rem) * ${progress})`;
 
   return (
     <section
@@ -57,67 +70,84 @@ export function JourneySection() {
           The journey so far
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted">
-          Chemical engineering to founding engineer — the path from campus to
-          shipping production systems. Scroll to follow it.
+          Chemical engineering to founding engineer — the route from campus to
+          shipping production systems. Scroll to set sail.
         </p>
       </Reveal>
 
-      <div ref={trackRef} className="relative mt-12 pl-12">
-        {/* Base rail */}
+      <div ref={trackRef} className="relative mt-14 pl-16">
+        {/* Dashed route (the map) */}
         <span
           aria-hidden="true"
-          className="absolute bottom-1 left-[21px] top-1 w-0.5 bg-border"
+          className="absolute bottom-2 left-6 top-2 w-0.5 -translate-x-1/2"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(var(--border) 0 7px, transparent 7px 14px)",
+          }}
         />
-        {/* Scroll-driven fill */}
+        {/* Sailed route (wake) */}
         <span
           aria-hidden="true"
-          className="absolute left-[21px] top-1 w-0.5"
+          className="absolute left-6 top-2 w-1 -translate-x-1/2 rounded-full"
           style={{
             height: `calc((100% - 0.5rem) * ${progress})`,
             background: "linear-gradient(var(--accent), var(--accent-2))",
+            boxShadow: "0 0 10px 0 var(--accent-soft)",
           }}
         />
-        {/* Comet head at the leading edge */}
+        {/* The boat, sailing the leading edge */}
         <span
           aria-hidden="true"
-          className="absolute left-[18px] h-2 w-2 -translate-y-1/2 rounded-full"
+          className="absolute left-6 z-10"
           style={{
-            top: `calc(0.25rem + (100% - 0.5rem) * ${progress})`,
-            background: "var(--accent)",
-            boxShadow: "0 0 12px 3px var(--accent)",
-            opacity: progress > 0.001 && progress < 0.999 ? 1 : 0,
-            transition: "opacity 0.3s",
+            top: shipTop,
+            transform: "translate(-50%, -50%)",
+            filter: "drop-shadow(0 0 7px rgba(245,165,36,0.8))",
           }}
-        />
+        >
+          <span className="ship-bob block">
+            <Sailboat />
+          </span>
+        </span>
 
-        <div className="space-y-12">
+        <div className="space-y-14">
           {journey.map((milestone, i) => {
-            const active = progress >= i / n - 0.02;
+            const active = progress >= i / n - 0.03;
             return (
               <div key={milestone.year} className="relative">
                 {/* Node */}
                 <span
                   aria-hidden="true"
-                  className="absolute left-[16px] top-1.5 h-3 w-3 rounded-full border-2 transition-all duration-500 ease-out"
+                  className="absolute left-6 top-[1.6rem] h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 transition-all duration-500 ease-out"
                   style={{
                     borderColor: "var(--accent)",
                     background: active ? "var(--accent)" : "var(--background)",
-                    transform: active ? "scale(1.25)" : "scale(1)",
-                    boxShadow: active ? "0 0 0 4px var(--accent-soft)" : "none",
+                    transform: active
+                      ? "translateX(-50%) scale(1.2)"
+                      : "translateX(-50%) scale(1)",
+                    boxShadow: active ? "0 0 0 5px var(--accent-soft)" : "none",
                   }}
                 />
                 <div
+                  className="rounded-xl border p-5 md:p-6"
                   style={
                     {
-                      opacity: active ? 1 : 0.35,
-                      transform: active ? "none" : "translateX(-10px)",
+                      background: "var(--surface)",
+                      borderColor: active
+                        ? "color-mix(in srgb, var(--accent) 45%, transparent)"
+                        : "var(--border)",
+                      boxShadow: active
+                        ? "0 12px 40px -24px var(--accent)"
+                        : "none",
+                      opacity: active ? 1 : 0.42,
+                      transform: active ? "none" : "translateX(-8px) scale(0.99)",
                       transition:
-                        "opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)",
+                        "opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1), border-color 0.5s, box-shadow 0.5s",
                     } as CSSProperties
                   }
                 >
                   <span
-                    className={`font-mono text-2xl font-bold md:text-3xl ${
+                    className={`font-mono text-3xl font-bold md:text-4xl ${
                       active ? "text-gradient" : "text-muted"
                     }`}
                   >
@@ -129,11 +159,11 @@ export function JourneySection() {
                   <p className="mt-2 max-w-xl text-sm text-muted">
                     {milestone.body}
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {milestone.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded border border-border bg-surface/40 px-2 py-1 font-mono text-xs text-muted"
+                        className="rounded border border-border bg-surface-2/60 px-2 py-1 font-mono text-xs text-muted"
                       >
                         {tag}
                       </span>
