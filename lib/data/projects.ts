@@ -48,12 +48,12 @@ const slimserve: CaseStudy = {
   tag: "Personal",
   dates: "Personal project",
   summary:
-    "A three-phase study proving a fine-tuned 1.5B student matches a 7B teacher on tool-calling at ~4.5× lower serving cost — with a from-scratch inference engine to show why.",
+    "A three-phase study proving a fine-tuned 1.5B student matches a 7B teacher on tool-calling at ~4.5× lower serving cost — measured end-to-end on vLLM, plus a from-scratch inference engine built to learn the internals.",
   metric: "1.5B matches 7B at ~4.5× lower cost",
   problem:
     "Serving large models for narrow agentic tool-calling is expensive. The open question: can a much smaller model match a 7B teacher on tool-calling accuracy, and how much does that cut serving cost — proven at every step, not asserted?",
   approach:
-    "Ran a three-phase pipeline on Kaggle T4s over the xLAM tool-calling benchmark: (1) baseline and quantize a 7B teacher (INT8/INT4) on vLLM; (2) compress into 1.5B and 0.5B students via QLoRA and three distillation recipes; (3) build a from-scratch inference engine (RoPE, grouped-query attention, paged-KV cache, continuous batching) to demonstrate the serving characteristics rather than just measure them.",
+    "Ran a three-phase pipeline on Kaggle T4s over the xLAM tool-calling benchmark: (1) baseline and quantize a 7B teacher (INT8/INT4) on vLLM; (2) compress into 1.5B and 0.5B students via QLoRA and three distillation recipes; (3) build a from-scratch inference engine (RoPE, grouped-query attention, paged-KV cache, continuous batching) to learn the serving internals hands-on — all cost, throughput, and latency numbers are measured on vLLM, not this engine.",
   decisions: [
     "Fine-tuned a 1.5B student to tool accuracy 1.00 / argument accuracy 0.80 — matching the 7B teacher — at $0.038 vs $0.176 per 1M tokens (~4.5× cheaper); the 0.5B reached $0.016 (~11× cheaper) at 0.99 tool accuracy.",
     "Found distillation gave no gains: escalating signal richness (gold labels → teacher outputs → full logit distributions) all landed at ~0.79 argument accuracy — on near-deterministic tool-calling the teacher's softmax already approximates the ground-truth labels, so there's no 'dark knowledge' left to transfer. Defaulted to plain gold SFT.",
@@ -61,7 +61,7 @@ const slimserve: CaseStudy = {
     "Used a Strategy + registry pattern (engines, trainers, evaluators as named, YAML-configured interfaces) so new compression experiments compose without code changes.",
   ],
   tradeoffs: [
-    "Building the inference engine from scratch (paged-KV, continuous batching) is far more work than serving on vLLM alone — taken on deliberately, to demonstrate the serving mechanics rather than treat them as a black box.",
+    "Fine-tuned on 5,000 xLAM examples and evaluated on 200 held-out tool calls — enough to establish the cost/quality trend, though a larger, more varied eval set would tighten the argument-accuracy figures.",
     "Conclusions are scoped to a narrow, near-deterministic tool-calling task; the 'distillation doesn't help' result would not necessarily hold on open-ended generation.",
   ],
   stack: [
