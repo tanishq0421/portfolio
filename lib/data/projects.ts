@@ -149,14 +149,14 @@ const outageRadar: CaseStudy = {
 // Impact-ordered showcase — work and personal projects interleaved, each
 // tagged, so the strongest work leads regardless of where it was built.
 export const selectedWork: CaseStudy[] = [
+  slimserve,
   sentinel,
+  outageRadar,
   mcpServer,
   jobInfra,
-  slimserve,
   billingEngine,
   mediaEngine,
   mynaksh,
-  outageRadar,
   kimccPulse,
 ];
 
