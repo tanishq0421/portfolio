@@ -11,9 +11,6 @@ export const techGroups: TechGroup[] = [
       { name: "Python", icon: "python", color: "#3776AB" },
       { name: "Go", icon: "go", color: "#00ADD8" },
       { name: "C++", icon: "cpp", color: "#00599C" },
-      { name: "C", icon: "c", color: "#A8B9CC" },
-      { name: "Rust", icon: "rust", color: "#CE422B" },
-      { name: "PHP", icon: "php", color: "#777BB4" },
       { name: "SQL", color: "#336791" },
     ],
   },
@@ -23,7 +20,6 @@ export const techGroups: TechGroup[] = [
       { name: "Node.js", icon: "node", color: "#5FA04E" },
       { name: "Express", icon: "express", color: "#000000" },
       { name: "FastAPI", icon: "fastapi", color: "#009688" },
-      { name: "Laravel", icon: "laravel", color: "#FF2D20" },
     ],
   },
   {
@@ -40,11 +36,14 @@ export const techGroups: TechGroup[] = [
     items: [
       { name: "PostgreSQL", icon: "postgresql", color: "#4169E1" },
       { name: "MongoDB", icon: "mongodb", color: "#47A248" },
-      { name: "MySQL", icon: "mysql", color: "#4479A1" },
       { name: "Redis", icon: "redis", color: "#FF4438" },
       { name: "ClickHouse", icon: "clickhouse", color: "#FFCC01" },
       { name: "Prisma", icon: "prisma", color: "#2D3748" },
       { name: "pgvector" },
+      { name: "Apache Kafka", icon: "kafka", color: "#231F20" },
+      { name: "Cloud Pub/Sub", icon: "pubsub", color: "#4285F4" },
+      { name: "BullMQ", color: "#B4302E" },
+      { name: "Celery", icon: "celery", color: "#37814A" },
     ],
   },
   {
