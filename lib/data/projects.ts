@@ -184,10 +184,10 @@ export const moreProjects: MoreProject[] = [
     href: "https://github.com/tanishq0421/RustyCLI",
   },
   {
-    title: "dsa",
+    title: "Richpanel",
     summary:
-      "A learn-by-doing DSA repo: implement against hidden tests, then compare — linked lists to LRU cache, with an interactive pointer visualizer.",
-    stack: ["Python"],
-    href: "https://github.com/tanishq0421/dsa",
+      "A support-ops tool that computes agents' true resolution time in business hours — intersecting each ticket's window with per-agent weekly schedules.",
+    stack: ["TypeScript", "Python", "Docker"],
+    href: "https://github.com/tanishq0421/Richpanel",
   },
 ];
